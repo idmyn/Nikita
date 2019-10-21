@@ -12,6 +12,7 @@
   <body>
     <%= link_to "Log in", new_session_path %><br/>
     <%= link_to "Sign up", new_user_path %>
+    <p>current user: <%= current_user&.name %></p>
     <%= yield %>
   </body>
 </html>
