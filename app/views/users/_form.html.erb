@@ -1,16 +1,16 @@
-<%= form_with model: User.new, url: "/sign-up", method: "post" do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<%= form_with model: @user, url: "/sign-up", method: "post", local: true do |form| %>
   <div class="field">
     <%= form.label :name, "Nickname" %>
     <%= form.text_field :name %>

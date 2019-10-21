@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :new_pin]
 
   # GET /ideas
   # GET /ideas.json
@@ -59,6 +59,10 @@ class IdeasController < ApplicationController
       format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def new_pin
+    # @idea.pins.create(user: SESSION?!!)
   end
 
   private
