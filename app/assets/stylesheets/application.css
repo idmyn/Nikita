@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+p {
+}
+
+.grow:hover,
+.grow:focus {
+  transform: perspective(1px) scale(1);
+  zoom: 1.05;
+}
+
+article {
+  width: 400px;
+  margin-bottom: 0.5em;
+}
+
+ {
+}

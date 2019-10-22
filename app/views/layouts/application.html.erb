@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+
+    
     <title>Nikita</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +15,7 @@
   <body>
   <% if current_user %>
     <%= link_to "Log out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-    <p>current user: <%= link_to current_user&.name, current_user %></p>
+    <p class="f1">Current User: <%= link_to current_user&.name, current_user %></p>
   <% else %>
     <%= link_to "Log in", new_session_path %><br/>
     <%= link_to "Sign up", new_user_path %>
