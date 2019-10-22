@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   delete "/log-out", to: "sessions#destroy", as: "delete_session"
   post "/ideas/:id/pin", to: "ideas#new_pin", as: "pin"
   delete "/ideas/:id/pin", to: "ideas#destroy_pin"
+  get "/", to: "ideas#index", as: "home"
 end
