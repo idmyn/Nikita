@@ -1,23 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @idea.title %>
-</p>
+<%= render 'idea', idea: @idea %>
 
-<p>
-  <strong>Body:</strong>
-  <%= @idea.body %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= link_to @idea.user.name, @idea.user %> 
 
-</p>
 | <%= link_to 'Back', ideas_path %> |
-
-<% if current_user.id == @idea.user_id %>
-  <%= link_to 'Edit', edit_idea_path(@idea) %> |
-  <%= link_to 'Destroy', @idea, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>

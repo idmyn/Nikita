@@ -22,7 +22,7 @@
       <tr>
         <td><%= idea.title %></td>
         <td><%= idea.body %></td>
-        <td><%= link_to idea.user_id, idea.user %></td>
+        <td><%= link_to idea.user.name, idea.user %></td>
         <td><%= link_to 'Show', idea %></td>
       </tr>
     <% end %>

@@ -15,10 +15,40 @@
   <%= @user.name %>
 </p>
 
+<h2>Recent Ideas</h2>
+
+<% @user.ideas.reverse.first(3).each do |idea| %>
+  <article>
+    <%= render 'ideas/idea', idea: idea %>
+  </article>
+<% end %>
+
+<h2>Most Pinned Ideas</h2>
+
+<% @user.most_pinned_ideas.first(3).each do |idea| %>
+  <article>
+    <%= render 'ideas/idea', idea: idea %>
+  </article>
+<% end %>
+
+<h2>Pins</h2>
+
+<% @user.pins.each do |pin| %>
+  <article>
+    <%= render 'ideas/idea', idea: pin.idea %>
+  </article>
+<% end %>
+
+
+
+
+
+
+
 
 | <%= link_to 'All Users', users_path %> |
 
-<% if current_user.id == @user.id %>
+<% if current_user&.id == @user.id %>
 <%= link_to 'Edit', edit_user_path(@user) %>  |
 <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>

@@ -62,7 +62,16 @@ class IdeasController < ApplicationController
   end
 
   def new_pin
-    # @idea.pins.create(user: SESSION?!!)
+    current_user.pins.create(idea_id: params[:id])
+
+    redirect_back fallback_location: ideas_path
+  end
+
+  def destroy_pin
+    pin = current_user.pins.find_by(idea_id: params[:id])
+    pin.destroy
+
+    redirect_back fallback_location: ideas_path
   end
 
   private
