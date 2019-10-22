@@ -10,8 +10,12 @@
   </head>
 
   <body>
+  <% if current_user %>
+    <%= link_to "Log out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+  <% else %>
     <%= link_to "Log in", new_session_path %><br/>
     <%= link_to "Sign up", new_user_path %>
+  <% end %>
     <p>current user: <%= current_user&.name %></p>
     <%= yield %>
   </body>

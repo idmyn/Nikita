@@ -14,5 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.destroy
+
+    redirect_to ideas_path
   end
 end
