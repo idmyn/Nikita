@@ -31,12 +31,14 @@
   </article>
 <% end %>
 
-<h2>Pins</h2>
+<% unless @user.pins.empty? %>
+  <h2>Pins</h2>
 
-<% @user.pins.each do |pin| %>
-  <article>
-    <%= render 'ideas/idea', idea: pin.idea %>
-  </article>
+  <% @user.pins.each do |pin| %>
+    <article>
+      <%= render 'ideas/idea', idea: pin.idea %>
+    </article>
+  <% end %>
 <% end %>
 
 

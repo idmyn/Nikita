@@ -12,7 +12,7 @@ class Idea < ApplicationRecord
     end
 
     def pins_count
-        "Pinned #{pins.count} times "
+        pins.count == 1 ? "Pinned #{pins.count} time" : "Pinned #{pins.count} times"
     end
 
     
