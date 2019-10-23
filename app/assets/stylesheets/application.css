@@ -42,3 +42,16 @@ article {
 nav .col-lg-2 {
   padding: 0rem;
 }
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+form {
+  /* margin: 2rem 0rem; */
+}
+
+form .btn {
+  margin-top: 0.5rem;
+}
