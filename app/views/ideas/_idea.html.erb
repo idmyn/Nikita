@@ -1,34 +1,36 @@
 
-<article>
-  <p>
-    <strong>Title:</strong>
-    <%= idea.title %>
-  </p>
+<div class="row justify-content-center">
+  <article class="col-lg-9 col-sm">
+    <p>   
+      <strong>Title:</strong>
+      <%= idea.title %>
+    </p>
 
-  <p>
-    <strong>Body:</strong>
-    <%= idea.body %>
-  </p>
+    <p>
+      <strong>Body:</strong>
+      <%= idea.body %>
+    </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= link_to idea.user.name, idea.user %> 
+    <p>
+      <strong>User:</strong>
+      <%= link_to idea.user.name, idea.user %> 
 
-  </p>
+    </p>
 
 
-  <% if current_user %>
-    <% if idea.pinned_by?(current_user) %>
-      <%= link_to 'Unpin!', pin_path(idea.id), method: :delete %> |
-    <% else %>
-      <%= link_to 'Pin!', pin_path(idea.id), method: :post %> |
+    <% if current_user %>
+      <% if idea.pinned_by?(current_user) %>
+        <%= link_to 'Unpin!', pin_path(idea.id), method: :delete %> |
+      <% else %>
+        <%= link_to 'Pin!', pin_path(idea.id), method: :post %> |
+      <% end %>
     <% end %>
-  <% end %>
-  <%= idea.pins_count %>
+    <%= idea.pins_count %>
 
 
-  <% if current_user&.id == idea.user_id %>
-    <%= link_to 'Edit', edit_idea_path(idea) %> |
-    <%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <% end %>
-</article>
+    <% if current_user&.id == idea.user_id %>
+      <%= link_to 'Edit', edit_idea_path(idea) %> |
+      <%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <% end %>
+  </article>
+</div>
