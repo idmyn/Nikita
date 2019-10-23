@@ -37,16 +37,29 @@
               </li>
             </div>
 
-            <div class="col-lg-2 offset-lg-4">
-              <li class="nav-item active">
-                <%= link_to "Log in", new_session_path, class: "nav-link" %>
-              </li>
-            </div>
-            <div class="col-lg-2">
-              <li class="nav-item">
-                <%= link_to "Sign up", new_user_path, class: "nav-link" %>
-              </li>
-            </div>
+            <% if current_user %>
+              <div class="col-lg-2 offset-lg-4">
+                <li class="nav-item active">
+                  <%= link_to "#{current_user&.name.capitalize}'s Profile", current_user, class: "nav-link" %>
+                </li>
+              </div>
+              <div class="col-lg-2">
+                <li class="nav-item active">
+                  <%= link_to "Log Out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "nav-link" %>
+                </li>
+              </div>
+            <% else %>
+              <div class="col-lg-2 offset-lg-4">
+                <li class="nav-item active">
+                  <%= link_to "Log in", new_session_path, class: "nav-link" %>
+                </li>
+              </div>
+              <div class="col-lg-2">
+                <li class="nav-item">
+                  <%= link_to "Sign up", new_user_path, class: "nav-link" %>
+                </li>
+              </div>
+            <% end %>
           </ul>
           
         </div>
