@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    
+
+
     <title>Nikita</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,15 +15,27 @@
   </head>
 
   <body>
-  <% if current_user %>
-    <%= link_to "Log out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-    <p class="f1">Current User: <%= link_to current_user&.name, current_user %></p>
-  <% else %>
-    <%= link_to "Log in", new_session_path %><br/>
-    <%= link_to "Sign up", new_user_path %>
-    
-  <% end %>
+    <div class="container">
+      <div class="row">
+      <div class="col">
+      </div>
+      <div class="row">
+      <% if current_user %>
+          <p>Current User: <%= link_to current_user&.name, current_user %></p> 
+          <%= link_to "Log out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+        <% else %>
+          <%= link_to "Log in", new_session_path %><br/>
+          <%= link_to "Sign up", new_user_path %>
+        <% end %>
+      </div>
+        
+      </div>
 
-    <%= yield %>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <%= yield %>
+        </div>
+      </div>
+    </div>  
   </body>
 </html>
