@@ -17,17 +17,23 @@
   <body>
     <div class="container">
       <div class="row">
-      <div class="col">
-      </div>
-      <div class="row">
-      <% if current_user %>
-          <p>Current User: <%= link_to current_user&.name, current_user %></p> 
-          <%= link_to "Log out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
-        <% else %>
-          <%= link_to "Log in", new_session_path %><br/>
-          <%= link_to "Sign up", new_user_path %>
-        <% end %>
-      </div>
+        <nav class="col">
+          <div class="row">
+            <%= link_to "Discover Ideas", ideas_path %>
+            <%= link_to "Find Users", users_path %>
+          </div>
+        </nav>
+        <nav class="col">
+          <div class="row justify-content-end">
+            <% if current_user %>
+              <p>Current User: <%= link_to current_user&.name, current_user %></p> 
+              <%= link_to "Log out", delete_session_path, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+            <% else %>
+              <%= link_to "Log in", new_session_path %><br/>
+              <%= link_to "Sign up", new_user_path %>
+            <% end %>
+          </div>
+        </nav>
         
       </div>
 
