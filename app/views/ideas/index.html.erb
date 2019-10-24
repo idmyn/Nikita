@@ -11,14 +11,25 @@
     </div>
   <% end %>
 
-  <% @ideas.reverse.each do |idea| %>
+
+  <% i = 0 %>
+  <% until i >= @ideas.length %>
+
     <div class="row justify-content-center">
-      
-        <%= render 'idea', idea: idea %>
-     
+      <div class="col-6-md row-sm mx-1">
+        <%= render 'idea', idea: @ideas.reverse[i] %>
+      </div>
+      <div class="col-6-md row-sm mx-1">
+        <%= render 'idea', idea: @ideas.reverse[i + 1] if @ideas.reverse[i + 1] %>
+      </div>
+       
     </div>
-    
+
+    <% i += 2 %>
+
   <% end %>
+
+
 
 </div>
 
