@@ -11,18 +11,22 @@
     </div>
   <% end %>
 
+  <% @ideas.reverse.each do |idea| %>
+    <div class="row justify-content-center">
+      
+        <%= render 'idea', idea: idea %>
+     
+    </div>
+    
+  <% end %>
+
 </div>
 
 
 
-    <div class="container">
-      <% @ideas.reverse.each do |idea| %>
-        
-        <%= render 'idea', idea: idea %>
+    
 
-        
-      <% end %>
-    </div>
+    
 
     
   
