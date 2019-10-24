@@ -55,3 +55,16 @@ form {
 form .btn {
   margin-top: 0.5rem;
 }
+
+.attrib {
+  margin-left: 4px;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover,
+a:focus {
+  background: white;
+}
