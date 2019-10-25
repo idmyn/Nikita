@@ -11,24 +11,15 @@
     </div>
   <% end %>
 
-
-  <% i = 0 %>
-  <% until i >= @ideas.length %>
+  <% Idea.idea_pairs.each do |idea_pair| %>
 
     <div class="row justify-content-center card-deck">
+      <% idea_pair.each do |idea| %>
       <div class="col-6-md row-sm">
-        <%= render 'idea', idea: @ideas.reverse[i] %>
+        <%= render 'idea', idea: idea if idea %>
       </div>
-      <div class="col-6-md row-sm">
-        <%= render 'idea', idea: @ideas.reverse[i + 1] if @ideas.reverse[i + 1] %>
-      </div>
-
+      <% end %>
     </div>
 
-    <% i += 2 %>
-
   <% end %>
-
-
-
 </div>
