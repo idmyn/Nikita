@@ -13,4 +13,12 @@ class User < ApplicationRecord
   def most_pinned_ideas
     ideas.reverse.sort_by { |idea| idea.pins.count }.reverse
   end
+
+  def most_recent_idea
+    ideas.reverse.first
+  end
+
+  def most_pinned_idea
+    most_pinned_ideas.first
+  end
 end

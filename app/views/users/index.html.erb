@@ -6,23 +6,44 @@
   </div>
 </div>
 
+<div class="row justify-content-center">
+  <div class="accordion col-10" id="usersAccordion">
+    <% @users.each do |user| %>
+      <div class="card">
+        <div class="card-header" id="heading<%= user.id %>">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= user.id %>" aria-expanded="true" aria-controls="collapse<%= user.id %>">
+            <%= user.name %>
+            </button>
+          </h2>
+        </div>
 
-<div class="accordion" id="usersAccordion">
-  <% @users.each do |user| %>
-    <div class="card">
-      <div class="card-header" id="heading<%= user.id %>">
-        <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= user.id %>" aria-expanded="true" aria-controls="collapse<%= user.id %>">
-          <%= user.name %>
-          </button>
-        </h2>
-      </div>
+        <div id="collapse<%= user.id %>" class="collapse" aria-labelledby="heading<%= user.id %>" data-parent="#usersAccordion">
+          <div class="card-body">
 
-      <div id="collapse<%= user.id %>" class="collapse" aria-labelledby="heading<%= user.id %>" data-parent="#usersAccordion">
-        <div class="card-body">
-          placeholder
+            <% if user.ideas.empty? %>
+              <h3 class="text-center"><%= user.name %> hasn't posted any ideas yet...</h3>
+            <% else %>
+              <div class="card-deck text-center">
+
+                <div class="col">
+                  <div class="row justify-content-center">
+                    <h3 class="mb-3">most recent idea</h3>
+                    <%= render "ideas/idea", idea: user.most_recent_idea %>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="row justify-content-center">
+                    <h3 class="mb-3">most pinned idea</h3>
+                    <%= render "ideas/idea", idea: user.most_pinned_idea %>
+                  </div>
+                </div>
+
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
