@@ -14,33 +14,44 @@
     <span class="mx-1"><%= link_to 'Destroy account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></span>
   </div>
 <% end %>
-<div class="row justify-content-center">
-  <h2 class="my-4">Recent Ideas</h2>
+
+<div class="row mt-4">
+  <div class="col-3 text-center">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-recent-list" data-toggle="list" href="#list-recent" role="tab" aria-controls="recent">Recent ideas</a>
+      <a class="list-group-item list-group-item-action" id="list-popular-list" data-toggle="list" href="#list-popular" role="tab" aria-controls="popular">Most pinned ideas</a>
+      <a class="list-group-item list-group-item-action" id="list-pins-list" data-toggle="list" href="#list-pins" role="tab" aria-controls="pins">Pins</a>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-recent" role="tabpanel" aria-labelledby="list-recent-list">
+
+        <% @user.ideas.reverse.each do |idea| %>
+          <article>
+            <%= render 'ideas/idea', idea: idea %>
+          </article>
+        <% end %>
+
+      </div>
+      <div class="tab-pane fade" id="list-popular" role="tabpanel" aria-labelledby="list-popular-list">
+
+        <% @user.most_pinned_ideas.each do |idea| %>
+          <article>
+            <%= render 'ideas/idea', idea: idea %>
+          </article>
+        <% end %>
+
+      </div>
+      <div class="tab-pane fade" id="list-pins" role="tabpanel" aria-labelledby="list-pins-list">
+
+        <% @user.pins.each do |pin| %>
+          <article>
+            <%= render 'ideas/idea', idea: pin.idea %>
+          </article>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
-
-<% @user.ideas.reverse.first(3).each do |idea| %>
-  <article>
-    <%= render 'ideas/idea', idea: idea %>
-  </article>
-<% end %>
-
-<h2>Most Pinned Ideas</h2>
-
-<% @user.most_pinned_ideas.first(3).each do |idea| %>
-  <article>
-    <%= render 'ideas/idea', idea: idea %>
-  </article>
-<% end %>
-
-<% unless @user.pins.empty? %>
-  <h2>Pins</h2>
-
-  <% @user.pins.each do |pin| %>
-    <article>
-      <%= render 'ideas/idea', idea: pin.idea %>
-    </article>
-  <% end %>
-<% end %>
-
-<% if current_user&.id == @user.id %>
-<% end %>
