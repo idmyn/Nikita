@@ -12,10 +12,22 @@ class Idea < ApplicationRecord
       i = 0
       result = []
       until i >= all_ideas.length
-        result.push([all_ideas[i], all_ideas[i + 1]])
+        result.push([all_ideas[i].to_hash, all_ideas[i + 1]&.to_hash])
         i += 2
       end
       result
+    end
+
+    def to_hash
+      {
+        title: self.title,
+        body: self.body,
+        user_id: self.user_id,
+        username: self.user.name,
+        id: self.id,
+        pin_count: self.pins.count,
+        pinner_ids: self.users.map(&:id)
+      }
     end
 
     def pinned_by?(user)
