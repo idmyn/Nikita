@@ -10,12 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: true
 
-
   def most_pinned_ideas
-    ideas.sort_by {|idea| idea.pins.count }.reverse
+    ideas.reverse.sort_by { |idea| idea.pins.count }.reverse
   end
-
-
-
-
 end
