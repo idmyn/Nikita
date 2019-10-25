@@ -36,17 +36,7 @@
   <% end %>
 <% end %>
 
-
-
-
-
-
-
-
-| <%= link_to 'All Users', users_path %> |
-
 <% if current_user&.id == @user.id %>
 <%= link_to 'Edit', edit_user_path(@user) %>  |
 <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
-
