@@ -16,7 +16,7 @@
     <div class="row justify-content-center card-deck">
       <% idea_pair.each do |idea| %>
       <div class="col-6-md row-sm">
-        <%= render 'idea', idea: idea if idea %>
+        <%= render 'idea_hash', idea: idea if idea %>
       </div>
       <% end %>
     </div>

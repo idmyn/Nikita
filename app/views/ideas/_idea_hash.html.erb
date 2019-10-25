@@ -1,44 +1,44 @@
   <article>
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal text-center"><%= link_to idea.title, idea %></h4>
+        <h4 class="my-0 font-weight-normal text-center"><%= link_to idea[:title], idea_path(idea[:id]) %></h4>
       </div>
 
       <div class="card-body">
         <div class="row m-1">
-          <p><%= idea.body %></p>
+          <p><%= idea[:body] %></p>
         </div>
 
         <div class="row mb-2">
           <div class="col-9">
-          <span class="attrib">— From the brain of <%= link_to idea.user.name, idea.user %> </span>
+          <span class="attrib">— From the brain of <%= link_to idea[:username], user_path(idea[:user_id]) %> </span>
           </div>
           <div class="col-1 mr-2">
-            <span class="ml-2 h5"><%= idea.pins.count unless idea.pins.count == 0  %></span>
+            <span class="ml-2 h5"><%= idea[:pin_count] unless idea[:pin_count] == 0  %></span>
           </div>
           <div class="col-1 text-left">
             <div class="row">
             <% if current_user %>
 
-              <% if idea.pinned_by?(current_user) %>
-                <a href="<%= pin_path(idea.id) %>" data-method="delete" >
+              <% if idea[:pinner_ids].include?(current_user&.id) %>
+                <a href="<%= pin_path(idea[:id]) %>" data-method="delete" >
                   <span class="fa-stack fa-1x">
                     <i class="fas fa-thumbtack fa-stack-1x" data-fa-transform="rotate-30 grow-6 down-2"></i>
                     <i class="fas fa-ban fa-stack-2x" data-fa-transform="grow-4 down-1 rotate-5" style="color:Tomato"></i>
                   </span>
                 </a>
               <% else %>
-                <a href="<%= pin_path(idea.id) %>" data-method="post" ><i class="fas fa-thumbtack fa-2x" data-fa-transform="rotate-30"></i></a>
+                <a href="<%= pin_path(idea[:id]) %>" data-method="post" ><i class="fas fa-thumbtack fa-2x" data-fa-transform="rotate-30"></i></a>
               <% end %>
             <% end %>
             </div>
           </div>
         </div>
 
-          <% if current_user&.id == idea.user_id %>
+          <% if current_user&.id == idea[:user_id] %>
             <div class="row justify-content-center" >
-              <a href="<%= edit_idea_path(idea) %>"><i class="fas fa-pencil-alt fa-2x mx-1"></i></a>
-              <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= idea_path(idea) %>"><i class="fas fa-recycle fa-2x mx-1"></i></a>
+              <a href="<%= edit_idea_path(idea[:id]) %>"><i class="fas fa-pencil-alt fa-2x mx-1"></i></a>
+              <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= idea_path(idea[:id]) %>"><i class="fas fa-recycle fa-2x mx-1"></i></a>
             </div>
           <% end %>
 
