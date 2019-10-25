@@ -1,16 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<h2>Recent Ideas</h2>
+<div class="row justify-content-center">
+  <h1 class="mb-0">
+    <%= @user.name %>
+  </h1>
+</div>
+<% if current_user&.id == @user.id %>
+  <div class="row justify-content-center mt-4">
+    <%= @user.email %>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <span class="mx-1"><%= link_to 'Edit account', edit_user_path(@user) %></span>
+    <span class="mx-1"><%= link_to 'Destroy account', @user, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  </div>
+<% end %>
+<div class="row justify-content-center">
+  <h2 class="my-4">Recent Ideas</h2>
+</div>
 
 <% @user.ideas.reverse.first(3).each do |idea| %>
   <article>
@@ -37,6 +43,4 @@
 <% end %>
 
 <% if current_user&.id == @user.id %>
-<%= link_to 'Edit', edit_user_path(@user) %>  |
-<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
